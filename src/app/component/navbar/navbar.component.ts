@@ -21,8 +21,13 @@ export class NavbarComponent  {
     });
   }
 
-  
+  openRegDialog() {
+    const dialogRef = this.dialog.open(DialogRegister);
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }
   
 
@@ -35,3 +40,10 @@ export class NavbarComponent  {
 export class DialogContentExampleDialog {
   
 }
+
+@Component({
+  selector:"dialog-content-example-register",
+  templateUrl:"dialog-register.html",
+  styleUrls: ['./form.component.css']
+})
+export class DialogRegister{}

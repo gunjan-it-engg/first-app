@@ -1,0 +1,28 @@
+<div classname="registerdialog">
+<mat-form-field appearance="fill">
+    <mat-label>name</mat-label>
+    <input matInput [formControl]="name" required>
+    <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="pat@example.com" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Select gender</mat-label>
+    <mat-select [formControl]="gender" required>
+      <mat-option value="one">Male</mat-option>
+      <mat-option value="two">Female</mat-option>
+    </mat-select>
+    <mat-error *ngIf="gender.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+  <div class="example-container">
+  <mat-form-field appearance="fill">
+    <mat-label>BIO</mat-label>
+    <textarea matInput></textarea>
+  </mat-form-field>
+  </div>
+</div>

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './component/navbar/navbar.component';
+import { DialogRegister, NavbarComponent } from './component/navbar/navbar.component';
 import { DisplayComponent } from './component/display/display.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
@@ -19,6 +19,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 import {HttpClientModule} from '@angular/common/http';
 import { LoginformComponent } from './component/loginform/loginform.component';
+import { RegformComponent } from './component/regform/regform.component';
+import { MatSelectModule} from '@angular/material/select';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -28,6 +31,8 @@ import { LoginformComponent } from './component/loginform/loginform.component';
     DisplayComponent,
     DialogContentExampleDialog,
     LoginformComponent,
+    DialogRegister,
+    RegformComponent
 
     
   ],
@@ -45,8 +50,9 @@ import { LoginformComponent } from './component/loginform/loginform.component';
     MatInputModule,
     FormsModule,  
     MatNativeDateModule,
-    HttpClientModule
-
+    HttpClientModule,
+    MatSelectModule,
+    MatCardModule
 
 
   ],
