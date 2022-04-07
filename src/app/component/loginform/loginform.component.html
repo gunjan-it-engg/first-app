@@ -1,0 +1,18 @@
+<!-- <p>loginform works!</p> -->
+<div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="pat@example.com" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+</div>
+<div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your passcode</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" [formControl]="passcode" required>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide passcode'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="passcode.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+</div>

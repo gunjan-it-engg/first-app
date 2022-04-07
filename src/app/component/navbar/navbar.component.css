@@ -1,0 +1,10 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+.auth-btn{
+    margin: 20px;
+}
+  
+.nav-header{
+    margin-left: 30px;
+}
