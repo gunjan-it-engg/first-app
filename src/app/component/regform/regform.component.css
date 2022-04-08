@@ -8,5 +8,13 @@
     height: auto;
 }
 .mat-form-field{
-    width: 200px;
+    width: 450px;
+}
+.example-container{
+    width: 450px;
+}
+.buttons{
+    align-content: center;
+    margin-top: 20px;
+    margin-left: 150px;
 }

@@ -1,28 +1,51 @@
 <div classname="registerdialog">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmitting(registerForm.value)"> 
 <mat-form-field appearance="fill">
     <mat-label>name</mat-label>
-    <input matInput [formControl]="name" required>
-    <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+    <input matInput formControlName="name" required>
+    <mat-error> 
+    <span *ngIf="!registerForm.get('name')?.valid || registerForm.get('name')?.touched">Please enter name 
+    </span>
+  </mat-error> 
   </mat-form-field>
   <div class="example-container">
     <mat-form-field appearance="fill">
       <mat-label>Enter your email</mat-label>
-      <input matInput placeholder="pat@example.com" [formControl]="email" required>
-      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      <input matInput placeholder="pat@example.com" formControlName="email" >
+      <mat-error>  
+      <span *ngIf="!registerForm.get('email')?.valid || registerForm.get('email')?.touched">Please enter email 
+      </span> 
+      </mat-error> 
     </mat-form-field>
   </div>
+
+  <div class="example-container">
   <mat-form-field appearance="fill">
     <mat-label>Select gender</mat-label>
-    <mat-select [formControl]="gender" required>
+    <mat-select formControlName="gender" required>
       <mat-option value="one">Male</mat-option>
       <mat-option value="two">Female</mat-option>
     </mat-select>
-    <mat-error *ngIf="gender.invalid">{{getErrorMessage()}}</mat-error>
+    <mat-error>
+    <span *ngIf="!registerForm.get('gender')?.valid || registerForm.get('gender')?.touched">Please select gender 
+    </span>
+  </mat-error>
   </mat-form-field>
-  <div class="example-container">
+  </div>
+  <!-- <div class="example-container">
   <mat-form-field appearance="fill">
     <mat-label>BIO</mat-label>
     <textarea matInput></textarea>
-  </mat-form-field>
-  </div>
+  </mat-form-field> -->
+<!-- </div> -->
+<div>
+<mat-slide-toggle formControlName="IsAccepted" (change)="onChange($event)">Accept Terms & Conditions</mat-slide-toggle>  
+</div>
+<div class="buttons"> 
+<button type="submit" mat-raised-button mat-dialog-close color="accent" [disabled]="!registerForm.valid || IsAccepted==0" > Submit</button>
+<button mat-stroked-button [mat-dialog-close]="true" cdkFocusInitial>
+  cancel
+</button>
+</div>
+</form>
 </div>

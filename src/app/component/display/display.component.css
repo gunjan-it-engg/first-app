@@ -14,5 +14,24 @@
       display: flex;
   }
   .card2{
-      margin: 30px;
+      /* margin: 30px; */
   }
+
+footer{
+    position: fixed;
+  text-align: center;
+  padding: 3px;
+  background-color: DarkSalmon;
+  color: white;
+  display: block;
+  bottom: 0%;
+  width: 100%;
+}
+
+/* .footer{
+    position : absolute;
+    bottom:0;
+    background-color: aqua;
+    color: snow;
+    width: 99%;
+} */

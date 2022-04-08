@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
-import { Validators} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
+import { FormBuilder, Validators , FormsModule,NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-regform',
@@ -8,27 +8,37 @@ import { Validators} from '@angular/forms';
   styleUrls: ['./regform.component.css']
 })
 export class RegformComponent implements OnInit {
-  email = new FormControl('', [Validators.required, Validators.email]);
-  name = new FormControl('', [Validators.required ]);
-  gender = new FormControl('',[Validators.required])
+  registerForm : FormGroup;
+    name: string='';
+    email : string='';
+    gender : string='';
+    IsAccepted:number=0;
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
+    constructor(private fb: FormBuilder){
+
+      this.registerForm = fb.group({
+        'name' : ["" , Validators.required],
+        'email' : ["", Validators.compose([Validators.required , Validators.email])],
+        'gender' :["", Validators.required],
+       'IsAccepted':[null]  
+      });
     }
 
-    if(this.name.hasError('required')){
-      return 'you must enter the name'
-    }
+    onChange(event:any)  
+  {  
+    if (event.checked == true) {  
+      this.IsAccepted = 1;  
+    } else {  
+      this.IsAccepted = 0;  
+    }  
+  } 
 
-    if(this.gender.hasError('required')){
-      return 'must select the gender'
-    }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+  onSubmitting(form:NgForm){
+    console.warn(form)
+    console.log( this.registerForm.value)
   }
 
-  constructor() { }
+
 
   ngOnInit(): void {
   }

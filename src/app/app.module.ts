@@ -22,6 +22,10 @@ import { LoginformComponent } from './component/loginform/loginform.component';
 import { RegformComponent } from './component/regform/regform.component';
 import { MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { TableComponent } from './component/table/table.component';
+import { PageNotFoundComponent } from './compoent/page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -32,7 +36,10 @@ import {MatCardModule} from '@angular/material/card';
     DialogContentExampleDialog,
     LoginformComponent,
     DialogRegister,
-    RegformComponent
+    RegformComponent,
+    DashboardComponent,
+    TableComponent,
+    PageNotFoundComponent
 
     
   ],
@@ -52,7 +59,8 @@ import {MatCardModule} from '@angular/material/card';
     MatNativeDateModule,
     HttpClientModule,
     MatSelectModule,
-    MatCardModule
+    MatCardModule,
+    MatSlideToggleModule
 
 
   ],
