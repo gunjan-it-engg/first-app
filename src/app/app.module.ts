@@ -25,7 +25,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { TableComponent } from './component/table/table.component';
-import { PageNotFoundComponent } from './compoent/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
+
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { PageNotFoundComponent } from './compoent/page-not-found/page-not-found.
     DashboardComponent,
     TableComponent,
     PageNotFoundComponent
+    
 
     
   ],
