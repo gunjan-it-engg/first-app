@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import { FormBuilder, Validators , FormsModule,NgForm } from '@angular/forms';
+import { LogdialogService } from 'src/app/services/logdialog.service';
 
 @Component({
   selector: 'app-regform',
@@ -8,18 +9,19 @@ import { FormBuilder, Validators , FormsModule,NgForm } from '@angular/forms';
   styleUrls: ['./regform.component.css']
 })
 export class RegformComponent implements OnInit {
+  hide = true
   registerForm : FormGroup;
     name: string='';
     email : string='';
-    gender : string='';
+    password : string='';
     IsAccepted:number=0;
 
-    constructor(private fb: FormBuilder){
+    constructor(private fb: FormBuilder , private register: LogdialogService ){
 
       this.registerForm = fb.group({
         'name' : ["" , Validators.required],
         'email' : ["", Validators.compose([Validators.required , Validators.email])],
-        'gender' :["", Validators.required],
+        'password' :["", Validators.required],
        'IsAccepted':[null]  
       });
     }
@@ -34,6 +36,9 @@ export class RegformComponent implements OnInit {
   } 
 
   onSubmitting(form:NgForm){
+    this.register.getRegister(form).subscribe(data =>{
+      console.log('register response',data)
+    })
     console.warn(form)
     console.log( this.registerForm.value)
   }

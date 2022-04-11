@@ -1,0 +1,11 @@
+
+footer{
+    position: fixed;
+  text-align: center;
+  padding: 3px;
+  background-color: DarkSalmon;
+  color: white;
+  display: block;
+  bottom: 0%;
+  width: 100%;
+}

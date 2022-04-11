@@ -26,6 +26,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { TableComponent } from './component/table/table.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
+import { FooterComponent } from './component/footer/footer.component';
+import {MatTableModule} from '@angular/material/table';
+
 
 
 
@@ -40,7 +43,8 @@ import { PageNotFoundComponent } from './component/page-not-found/page-not-found
     RegformComponent,
     DashboardComponent,
     TableComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FooterComponent
     
 
     
@@ -62,7 +66,8 @@ import { PageNotFoundComponent } from './component/page-not-found/page-not-found
     HttpClientModule,
     MatSelectModule,
     MatCardModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTableModule
 
 
   ],

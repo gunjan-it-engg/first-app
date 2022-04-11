@@ -8,3 +8,14 @@
 .nav-header{
     margin-left: 30px;
 }
+
+/* .active{
+    color: aliceblue;
+    text-decoration: dashed;
+    /* text-decoration: black; */
+
+
+.nav-header{
+    text-decoration: dashed;
+    color: aliceblue;
+}

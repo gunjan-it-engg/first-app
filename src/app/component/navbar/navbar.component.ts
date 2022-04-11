@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component , OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
+import { LogdialogService } from 'src/app/services/logdialog.service';
 
 
 
@@ -9,9 +10,10 @@ import {MatDialog} from '@angular/material/dialog';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent  {
+export class NavbarComponent  implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog , private registerClose:LogdialogService ) { 
+  }
 
   openDialog() {
     const dialogRef = this.dialog.open(DialogContentExampleDialog);
@@ -23,10 +25,23 @@ export class NavbarComponent  {
 
   openRegDialog() {
     const dialogRef = this.dialog.open(DialogRegister);
+      // this.registerClose.getAuthstate().subscribe(data=>{
+      //   if(data){
+      //     dialogRef.close()
+      //   }
+      // })
+      
+    
+    
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  ngOnInit(): void {
+    
+  
   }
 }
   
