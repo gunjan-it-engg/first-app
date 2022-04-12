@@ -28,7 +28,7 @@ import { TableComponent } from './component/table/table.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { FooterComponent } from './component/footer/footer.component';
 import {MatTableModule} from '@angular/material/table';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -67,7 +67,8 @@ import {MatTableModule} from '@angular/material/table';
     MatSelectModule,
     MatCardModule,
     MatSlideToggleModule,
-    MatTableModule
+    MatTableModule,
+    MatProgressSpinnerModule
 
 
   ],

@@ -48,7 +48,7 @@
 <mat-slide-toggle formControlName="IsAccepted" (change)="onChange($event)">Accept Terms & Conditions</mat-slide-toggle>  
 </div>
 <div class="buttons"> 
-<button type="submit" sucess mat-raised-button mat-dialog-closes  color="accent" [disabled]="!registerForm.valid || IsAccepted==0" > Submit</button>
+<button type="submit" sucess mat-raised-button mat-dialog-closes  color="accent" [disabled]="!registerForm.valid || IsAccepted==0" > Register</button>
 <button mat-stroked-button [mat-dialog-close]="true" cdkFocusInitial>
   cancel
 </button>

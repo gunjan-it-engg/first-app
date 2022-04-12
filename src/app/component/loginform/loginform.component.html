@@ -1,18 +1,30 @@
 <!-- <p>loginform works!</p> -->
-<div class="examples-container">
+<div>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmitting(loginForm.value)">
+    <div class="examples-container">
     <mat-form-field appearance="fill">
       <mat-label>Enter your email</mat-label>
-      <input matInput placeholder="pat@example.com" [formControl]="email" required>
-      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      <input matInput placeholder="pat@example.com" formControlName="email" required>
+      <mat-error ><span *ngIf="!loginForm.get('email')?.valid || loginForm.get('email')?.touched">Please enter email 
+      </span></mat-error>
     </mat-form-field>
 </div>
 <div class="example-container">
     <mat-form-field appearance="fill">
-      <mat-label>Enter your passcode</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'" [formControl]="passcode" required>
-      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide passcode'" [attr.aria-pressed]="hide">
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
-      <mat-error *ngIf="passcode.invalid">{{getErrorMessage()}}</mat-error>
+      <mat-error > <span *ngIf="!loginForm.get('password')?.valid || loginForm.get('password')?.touched">Please enter password & correct 
+      </span></mat-error>
     </mat-form-field>
+</div>
+<div class="buttons"> 
+  <button type="submit" sucess mat-raised-button mat-dialog-closes  color="accent" [disabled]="!loginForm.valid" > Submit</button>
+  <button mat-stroked-button [mat-dialog-close]="true" cdkFocusInitial>
+    cancel
+  </button>
+  </div>
+</form>
 </div>

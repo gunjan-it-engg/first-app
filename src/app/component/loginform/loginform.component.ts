@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl , FormGroup , FormBuilder , NgForm } from '@angular/forms';
 import { Validators} from '@angular/forms';
+import { LogdialogService } from 'src/app/services/logdialog.service';
+import {MatDialog} from '@angular/material/dialog';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-loginform',
@@ -9,22 +12,26 @@ import { Validators} from '@angular/forms';
 })
 export class LoginformComponent implements OnInit {
   hide = true
-  passcode = new FormControl('',[Validators.required])
-  email = new FormControl('', [Validators.required, Validators.email]);
+  loginForm : FormGroup;
+   email: string='';
+   password: string='';
 
-  getErrorMessage() {
-    if(this.passcode.hasError('required')){
-      return 'enter the passcode'
-    }
-
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+  constructor(private fb: FormBuilder , private log: LogdialogService  ,public dialog: MatDialog , private route : Router ) { 
+     this.loginForm = fb.group({
+      'email' : ["", Validators.compose([Validators.required , Validators.email])],
+      'password' : ["" , Validators.required]
+    })
   }
 
-  constructor() { }
+  onSubmitting(form:NgForm){
+    this.log.getLogin(form).subscribe(data =>{
+      if(data){
+        this.dialog.closeAll()
+        this.route.navigate(['/dash-board'])
+      }
+      console.log('login response',data)
+    })
+  }
 
   ngOnInit(): void {
   }

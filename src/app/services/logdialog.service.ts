@@ -14,13 +14,7 @@ export class LogdialogService {
   constructor(private httpClient : HttpClient) { }
 
   getAuthstate(){
-    const user = localStorage.getItem("current_register")
-    if (user){
-      return user
-    }
-    else {
-      return false
-    }
+    return localStorage.getItem("current_register")
   }
 
   getPosts(){
@@ -38,5 +32,9 @@ export class LogdialogService {
       localStorage.setItem('Current_Login', JSON.stringify(user))
       return user
     }))
+  }
+
+  logout(){
+    localStorage.clear()
   }
 }

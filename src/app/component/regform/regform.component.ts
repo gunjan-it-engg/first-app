@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import { FormBuilder, Validators , FormsModule,NgForm } from '@angular/forms';
 import { LogdialogService } from 'src/app/services/logdialog.service';
+import { DialogRegister} from '../navbar/navbar.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-regform',
@@ -10,13 +12,14 @@ import { LogdialogService } from 'src/app/services/logdialog.service';
 })
 export class RegformComponent implements OnInit {
   hide = true
+  
   registerForm : FormGroup;
     name: string='';
     email : string='';
     password : string='';
     IsAccepted:number=0;
 
-    constructor(private fb: FormBuilder , private register: LogdialogService ){
+    constructor(private fb: FormBuilder , private register: LogdialogService , public dialog: MatDialog ){
 
       this.registerForm = fb.group({
         'name' : ["" , Validators.required],
@@ -35,8 +38,12 @@ export class RegformComponent implements OnInit {
     }  
   } 
 
+
   onSubmitting(form:NgForm){
     this.register.getRegister(form).subscribe(data =>{
+      if(data){
+        this.dialog.closeAll()
+      }
       console.log('register response',data)
     })
     console.warn(form)

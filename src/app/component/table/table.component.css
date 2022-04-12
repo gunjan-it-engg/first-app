@@ -2,9 +2,14 @@ table{
     width: 90%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: auto;
+    margin-top: 100px;
     margin-bottom: auto;
 }
 th{
     margin: 20px;
+}
+mat-spinner{
+    margin-top: 100px;
+    width: auto;
+    margin-left: 800px;
 }

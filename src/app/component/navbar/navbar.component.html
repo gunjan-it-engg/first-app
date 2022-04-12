@@ -8,8 +8,9 @@
       <span > <a class="nav-header" routerLink="/dash-board" routerLinkActive="active">dash-board</a></span>
       <span class="example-spacer"></span>
       <div> 
-      <button mat-raised-button (click)="openDialog()" class="auth-btn">Login</button>
-      <button mat-raised-button color="accent" (click)="openRegDialog()">Register</button>
+      <button *ngIf="auth == false" mat-raised-button color="default" (click)="openDialog()" class="auth-btn">Login</button>
+      <button *ngIf="auth == false"  mat-raised-button color="accent" (click)="openRegDialog()">Register</button>
+      <button *ngIf="auth == true" mat-raised-button color="accent" (click)="logOut()">Log Out</button>
     </div>
     </mat-toolbar>
   </p>
