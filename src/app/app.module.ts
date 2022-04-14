@@ -29,7 +29,8 @@ import { PageNotFoundComponent } from './component/page-not-found/page-not-found
 import { FooterComponent } from './component/footer/footer.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
+import {MatTabsModule} from '@angular/material/tabs';
+import { TabsComponent } from './component/tabs/tabs.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     DashboardComponent,
     TableComponent,
     PageNotFoundComponent,
-    FooterComponent
+    FooterComponent,
+    TabsComponent,
     
 
     
@@ -68,7 +70,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatCardModule,
     MatSlideToggleModule,
     MatTableModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTabsModule
 
 
   ],

@@ -1,5 +1,6 @@
 import { Component , OnInit , OnChanges} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LogdialogService } from 'src/app/services/logdialog.service';
 
 
@@ -11,10 +12,16 @@ import { LogdialogService } from 'src/app/services/logdialog.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent  implements OnInit {
-  auth : any
+  public auth: boolean = true
+  activatedRoute: ActivatedRoute | null | undefined;
 
-  constructor(public dialog: MatDialog , private registerClose:LogdialogService ) { 
+  
+
+  constructor(public dialog: MatDialog , private registerClose:LogdialogService , public route : Router) {  
+    this.getAuthenticated()
   }
+
+  
 
   // login dialog 
   openDialog() {
@@ -33,34 +40,22 @@ export class NavbarComponent  implements OnInit {
     });
   }
 
-  // checking the personally is register or not .
+  // checking the user login from service
   getAuthenticated():void{
-    const user = localStorage.getItem("current_register") || localStorage.getItem("Current_Login")
-    if (user){
-      this.auth = true
-    }
-    else {
-      this.auth = false
-    }
-    // this.registerClose.getAuthstate().subscribe((response)=>{
-    //   this.auth = response
-    // });
+    this.registerClose.getAuthstate().subscribe((data)=>{
+      this.auth = data
+      console.log(this.auth)
+      console.log(data)
+    })
   }
 
   //logout user 
   logOut(){
     this.registerClose.logout()
+    this.route.navigate([''])
   }
 
-  ngOnInit():void {
-    const user = localStorage.getItem("current_register") || localStorage.getItem("Current_Login")
-    if (user){
-      this.auth = true
-    }
-    else {
-      this.auth = false
-    }
-    // this.getAuthenticated()
+  ngOnInit():void { 
   }
   
 }

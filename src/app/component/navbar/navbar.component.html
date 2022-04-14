@@ -5,14 +5,15 @@
         <mat-icon>menu</mat-icon>
       </button>
       <span ><a class="nav-header" routerLink="" routerLinkActive="active">Angular App 13</a> </span>
-      <span > <a class="nav-header" routerLink="/dash-board" routerLinkActive="active">dash-board</a></span>
+      <span> <a class="nav-header" *ngIf="auth" routerLink="/dash-board" routerLinkActive="active">dash-board</a></span>
       <span class="example-spacer"></span>
-      <div> 
-      <button *ngIf="auth == false" mat-raised-button color="default" (click)="openDialog()" class="auth-btn">Login</button>
-      <button *ngIf="auth == false"  mat-raised-button color="accent" (click)="openRegDialog()">Register</button>
-      <button *ngIf="auth == true" mat-raised-button color="accent" (click)="logOut()">Log Out</button>
+      
+      <div *ngIf="!auth">
+        <button mat-raised-button color="default" (click)="openDialog()" class="auth-btn">Login</button>
+        <button mat-raised-button color="accent" (click)="openRegDialog()">Register</button>
+      </div>
+      <div *ngIf="auth">
+      <button mat-raised-button color="accent" (click)="logOut()">Log Out</button>
     </div>
     </mat-toolbar>
-  </p>
-
-  
+</p>

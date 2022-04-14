@@ -3,7 +3,7 @@ import {FormControl , FormGroup , FormBuilder , NgForm } from '@angular/forms';
 import { Validators} from '@angular/forms';
 import { LogdialogService } from 'src/app/services/logdialog.service';
 import {MatDialog} from '@angular/material/dialog';
-import { Router } from '@angular/router'
+import { ActivatedRoute, Router , UrlTree} from '@angular/router'
 
 @Component({
   selector: 'app-loginform',
@@ -15,6 +15,7 @@ export class LoginformComponent implements OnInit {
   loginForm : FormGroup;
    email: string='';
    password: string='';
+  activatedRoute: ActivatedRoute | null | undefined;
 
   constructor(private fb: FormBuilder , private log: LogdialogService  ,public dialog: MatDialog , private route : Router ) { 
      this.loginForm = fb.group({
@@ -27,7 +28,7 @@ export class LoginformComponent implements OnInit {
     this.log.getLogin(form).subscribe(data =>{
       if(data){
         this.dialog.closeAll()
-        this.route.navigate(['/dash-board'])
+        this.route.navigate(['/dash-board'],{ relativeTo: this.activatedRoute })
       }
       console.log('login response',data)
     })
