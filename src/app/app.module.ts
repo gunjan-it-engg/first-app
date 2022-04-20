@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule , Title} from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +31,17 @@ import {MatTableModule} from '@angular/material/table';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTabsModule} from '@angular/material/tabs';
 import { TabsComponent } from './component/tabs/tabs.component';
+import { LogdialogService } from './services/logdialog.service';
+import { CrudComponent } from './component/crud/crud.component';
+import { CrudDialogComponent } from './component/crud-dialog/crud-dialog.component';
+import { CrudTableComponent } from './component/crud-table/crud-table.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { WarningDialog } from './component/crud-table/crud-table.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
+
 
 
 @NgModule({
@@ -47,6 +58,10 @@ import { TabsComponent } from './component/tabs/tabs.component';
     PageNotFoundComponent,
     FooterComponent,
     TabsComponent,
+    CrudComponent,
+    CrudDialogComponent,
+    CrudTableComponent,
+    WarningDialog
     
 
     
@@ -71,11 +86,16 @@ import { TabsComponent } from './component/tabs/tabs.component';
     MatSlideToggleModule,
     MatTableModule,
     MatProgressSpinnerModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatProgressBarModule
+
 
 
   ],
-  providers: [],
+  providers: [Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

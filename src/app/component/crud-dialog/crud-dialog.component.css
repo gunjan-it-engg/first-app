@@ -1,0 +1,21 @@
+.examples-container{
+    margin: auto;
+}
+#second{
+    margin-left: 25px;
+}
+
+#date{
+    width: 100%;
+}
+
+.buttons{
+    display:center;
+    margin-left: 100px;
+}
+
+#button{
+   margin-top: 10px;
+   margin: auto;
+   
+}

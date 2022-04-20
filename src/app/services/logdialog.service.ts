@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { pipe , of , Observable , BehaviorSubject} from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LogdialogService implements OnInit{
+export class LogdialogService {
   private url = 'https://jsonplaceholder.typicode.com/posts/1/comments'
   private localurl = 'http://localhost:4000/users'
   private loginurl = 'http://localhost:4000/users/login'
@@ -77,7 +77,5 @@ export class LogdialogService implements OnInit{
     }
   }
 
-  ngOnInit(): void {
-    // this.tokenCheck()
-  }
+
 }

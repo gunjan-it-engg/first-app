@@ -1,0 +1,110 @@
+<h2 mat-dialog-title>{{btnText}} Employee Details</h2>
+<mat-dialog-content class="mat-typography">
+  <!-- <p>loginform works!</p> -->
+<div>
+    <form [formGroup]="employeForm" (ngSubmit)="onSubmitting(employeForm.value)">
+        <div class="examples-container">
+            <mat-form-field appearance="standard">
+                <mat-label>first name</mat-label>
+                <input matInput placeholder="name" formControlName="name" required>
+                <mat-error><span *ngIf="!employeForm.get('name')?.valid || employeForm.get('name')?.touched">please enter name</span></mat-error>
+            </mat-form-field>
+        <!-- </div> -->
+        <!-- <div class="second"> -->
+            <mat-form-field appearance="standard" id="second">
+                <mat-label>last name</mat-label>
+                <input matInput placeholder="lastName" formControlName="lastName" required>
+                <mat-error><span *ngIf="!employeForm.get('lastName')?.valid || employeForm.get('lastName')?.touched">please enter last name</span></mat-error>
+            </mat-form-field>
+        </div>
+        <div class="examples-container">
+            <mat-form-field appearance="standard">
+                <mat-label>Gender select</mat-label>
+                <mat-select formControlName="gender" required>
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let animal of gender" [value]="animal.name">
+                    {{animal.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-error ><span *ngIf="!employeForm.get('gender')?.valid || employeForm.get('gender')?.touched">please select gender </span></mat-error>
+              </mat-form-field>
+        <!-- </div> -->
+        <!-- <div class="examples-container"> -->
+            <mat-form-field appearance="standard" id="second">
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="pat@example.com" formControlName="email" required>
+                <mat-error ><span *ngIf="!employeForm.get('email')?.valid || employeForm.get('email')?.touched">Please enter email 
+                </span></mat-error>
+              </mat-form-field>
+        </div>
+        <div class="examples-container">
+            
+          <mat-form-field appearance="standard" id="date">
+            <mat-label>Choose a dob</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dob" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          
+          <mat-error ><span *ngIf="!employeForm.get('dob')?.valid || employeForm.get('dob')?.touched">Please choose dob 
+          </span></mat-error>
+            </mat-form-field>
+        </div>
+        <div class="examples-container">
+            <mat-form-field appearance="standard">
+              <mat-label>Your mobile number</mat-label>
+              <input matInput placeholder="+91-123-455-5554" formControlName="phone"  required>
+              <mat-error ><span *ngIf="employeForm.get('phone')?.touched ">Please enter valid phone 
+              </span></mat-error>
+            </mat-form-field>
+        <!-- </div> -->
+        <!-- <div class="examples-container"> -->
+                <mat-form-field appearance="standard" id="second">
+                  <mat-label>Enter your salary</mat-label>
+                  <input matInput placeholder="$000000" formControlName="salary" required>
+                  <mat-error ><span *ngIf="!employeForm.get('salary')?.valid || employeForm.get('salary')?.touched">Please enter salary 
+                  </span></mat-error>
+                </mat-form-field>
+        </div>
+        <div class="examples-container">
+        <mat-form-field appearance="standard">
+            <mat-label>Enter your country</mat-label>
+            <input matInput placeholder="country" formControlName="country" required>
+            <mat-error ><span *ngIf="!employeForm.get('country')?.valid || employeForm.get('country')?.touched">Please enter country 
+            </span></mat-error>
+          </mat-form-field>
+        <!-- </div> -->
+        <!-- <div class="examples-container"> -->
+          <mat-form-field appearance="standard" id="second">
+            <mat-label>Enter your state</mat-label>
+            <input matInput placeholder="state" formControlName="state" required>
+            <mat-error ><span *ngIf="!employeForm.get('state')?.valid || employeForm.get('state')?.touched">Please enter state 
+            </span></mat-error>
+          </mat-form-field>
+        </div>
+        <div class="examples-container">
+            <mat-form-field appearance="standard">
+                <mat-label>Enter your city</mat-label>
+                <input matInput placeholder="city" formControlName="city" required>
+                <mat-error ><span *ngIf="!employeForm.get('city')?.valid || employeForm.get('city')?.touched">Please enter city 
+                </span></mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="standard" id="second">
+                <mat-label>Enter your address</mat-label>
+                <input matInput placeholder="city" formControlName="address" required>
+                <mat-error ><span *ngIf="!employeForm.get('address')?.valid || employeForm.get('address')?.touched">Please enter address 
+                </span></mat-error>
+              </mat-form-field>
+        </div>
+    <div class="buttons"> 
+      <button type="submit" sucess mat-raised-button mat-dialog-closes  color="primary"  [disabled]="!employeForm.valid" id="button"> {{btnText}}</button>
+      <button mat-stroked-button [mat-dialog-close]="true" cdkFocusInitial id="button">
+        cancel
+      </button>
+    </div>
+    </form>
+    </div>
+</mat-dialog-content>
+<!-- <mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+</mat-dialog-actions> -->

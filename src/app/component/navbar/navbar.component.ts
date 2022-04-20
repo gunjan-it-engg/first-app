@@ -56,6 +56,9 @@ export class NavbarComponent  implements OnInit {
   }
 
   ngOnInit():void { 
+    // include this calls for check token on page refresh
+    this.registerClose.getAuthstate()
+    this.registerClose.tokenCheck()
   }
   
 }

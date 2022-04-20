@@ -1,0 +1,8 @@
+<h2 mat-dialog-title > <mat-icon color="yellow">warning</mat-icon> Warning ! </h2> 
+<p mat-dialog-content>
+    <h5>make sure about this content and delete! you will be responsible for that</h5>
+    <p>are you sure want to delete this element! this may not be restore after the deleting this element</p>
+<mat-dialog-actions align="center">
+  <button mat-button mat-dialog-close><mat-icon>clear_outline</mat-icon></button>
+  <button mat-button cdkFocusInitial color="accent" (click)=deletingEmployee()><mat-icon>done</mat-icon></button>
+</mat-dialog-actions>
