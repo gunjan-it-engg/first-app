@@ -16,9 +16,13 @@ export class CrudComponent implements OnInit {
     this.dialog.open(CrudDialogComponent).afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       if (result == 'save'){
-        this.empservice.getEmployee()
+        this.empservice.getAddUpdate()
       }
     });
+  }
+
+  refreshData(){
+    this.empservice.getAddUpdate()
   }
 
   ngOnInit(): void {

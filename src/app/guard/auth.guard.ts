@@ -30,7 +30,7 @@ export class AuthGuard implements CanActivate {
         // return authenticated ? true : false
         if (res){
           return true
-        } else {
+        }  else {   
           return this.route.createUrlTree([''])
         }
       })

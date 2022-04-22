@@ -1,5 +1,6 @@
 import { Component , OnInit} from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,11 @@ export class AppComponent implements OnInit{
   title(title: any) {
     throw new Error('Method not implemented.');
   }
-  public constructor( private titleService: Title){
+  public constructor( private titleService: Title , public route : Router){
     this.titleService.setTitle('Practice app');
+    if(!navigator.onLine){
+      this.route.navigate(['/noInternet'])
+    }
   }
 
   
@@ -21,6 +25,9 @@ export class AppComponent implements OnInit{
   // }
 
   ngOnInit(): void {
+    if(navigator.onLine){
+      this.route.navigate(['/dash-board'])
+    }
     // this.setTitle()
   }
 }

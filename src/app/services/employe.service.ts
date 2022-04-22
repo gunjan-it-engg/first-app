@@ -1,20 +1,63 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
+import { HttpClient , 
+        HttpRequest,
+        HttpHandler,
+        HttpEvent,
+        HttpInterceptor} from '@angular/common/http';
+import { map , Observable, of, Subject, throwError} from 'rxjs';
+import { concatMap, delay, retryWhen } from 'rxjs/operators';
+import { Router } from '@angular/router';
+
+
+export const retryCount = 3;
+export const retryWaitMilliSeconds = 5000;
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class EmployeService {
+export class EmployeService implements HttpInterceptor{
   private empPostURl = 'http://localhost:4000/employee'
   private empgetURl = 'http://localhost:4000/employee/list'
   private empDelete = 'http://localhost:4000/employee/delete'
   private empEdit = 'http://localhost:4000/employee/edit'
   id : any
+  addUpdatevisible: Subject<boolean> = new Subject<boolean>();
+  addUpdate: boolean ;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient , private route : Router) {
+    this.addUpdate = false
+  }
+
+  // after adding the value updating the table 
+  getAddUpdate(){
+    this.addUpdate = !this.addUpdate
+    this.addUpdatevisible.next(this.addUpdate)
+  }
+
+  // this will helping to reconnect with internet
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    return next.handle(request).pipe(
+      retryWhen(error => 
+        error.pipe(
+          concatMap((error, count) => {
+            if (count <= retryCount && error.status == 1005 || !navigator.onLine) {   // here we can define the error status code which will be intercept
+              this.route.navigate(['/noInternet'])
+              return of(error);
+            }
+            else {
+              this.route.navigate(['/dash-board'])
+              this.getEmployee()
+            }
+            return throwError(error);
+          }),
+          delay(retryWaitMilliSeconds)
+        )
+      )
+    )
   }
   
+  // for delete user we set id and then delete on click
   setID(delID:any){
     this.id = delID
     console.log(this.id)

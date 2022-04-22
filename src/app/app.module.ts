@@ -17,7 +17,7 @@ import {MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input'
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
 import { LoginformComponent } from './component/loginform/loginform.component';
 import { RegformComponent } from './component/regform/regform.component';
 import { MatSelectModule} from '@angular/material/select';
@@ -40,6 +40,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { WarningDialog } from './component/crud-table/crud-table.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { EmployeService } from './services/employe.service';
+import { NoInternetComponent } from './component/no-internet/no-internet.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 
@@ -61,7 +64,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     CrudComponent,
     CrudDialogComponent,
     CrudTableComponent,
-    WarningDialog
+    WarningDialog,
+    NoInternetComponent
     
 
     
@@ -90,12 +94,14 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatSortModule,
     MatPaginatorModule,
     MatDatepickerModule,
-    MatProgressBarModule
+    MatProgressBarModule , 
+    MatTooltipModule
+    
 
 
 
   ],
-  providers: [Title],
+  providers: [Title , { provide: HTTP_INTERCEPTORS, useClass: EmployeService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

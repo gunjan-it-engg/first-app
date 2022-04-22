@@ -63,11 +63,9 @@ export class CrudDialogComponent implements OnInit {
 
    onSubmitting(form:NgForm){
      if (!this.editData){
-       this.postEmp.postEmployee(form).forEach(data =>{
-         if (data){
+       this.postEmp.postEmployee(form).subscribe(data =>{
            this.dialog.close('save') 
-         }
-         console.log('login response',form)
+         console.log('add response',data)
        })
      } else {
         this.editEmployee()

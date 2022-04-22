@@ -5,7 +5,8 @@
     </button>
     <span>Angular Crud System</span>
     <span class="example-spacer"></span>
-    <button mat-raised-button color="primary" (click)=openDialog()><mat-icon>add_circle_outline</mat-icon> Data</button>
+    <button mat-icon-button color="primary" id="refresh" (click)=refreshData() matTooltip="Refresh Data"><mat-icon>refresh</mat-icon></button>
+    <button mat-raised-button color="primary" (click)=openDialog() ><mat-icon>add_circle_outline</mat-icon> Data</button>
   </mat-toolbar>
 </p>
   <div class="tables">
